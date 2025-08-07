@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RPG Nome</title>
+<script type="text/javascript" src="assets/js/Reativo.js"></script>
+<script type="text/javascript" src="assets/js/dice.js"></script>
+<script type="text/javascript" src="assets/js/gerarp.js"></script> 
+
+<link rel="stylesheet" type="text/css" href="assets/css/cssPerso.css" media="screen" />
+
+</head>
+<body>
+<div class='container'>
+        <div class="nome">
+            <label for="Nome">Nome do Personagem:</label>
+            <input type="text" id='nomePersonagem'/>
+        </div>
+   
+    <div id="classes">
+        <input type="button" onclick="classe('Guerreiro')" value="Guerreiro">
+        <input type="button" onclick="classe('Mago')" value="Mago">
+        <input type="button" onclick="classe('Ladrao')" value="Ladrão">
+        <input type="button" onclick="classe('Cacador')" value="Caçador">
+        <input type="button" onclick="classe('Necromante')" value="Necromante">
+        <input type="button" onclick="classe('Xama')" value="Xamã">
+        <input type="button" onclick="classe('Bardo')" value="Bardo">
+    </div>
+    <img id="imagemClasse" src="">
+    <div class="ataques-campo">
+        <div class="editAtaques" id="escolhido-ataque1" onclick="selectAtaques(1)">
+            <label id="nome-ataque1"></label>
+            <label id="desc-ataque1"></label>
+            <label id="cd-ataque1"></label>
+            <label id="dano-ataque1"></label>
+        </div>
+        <div class="editAtaques" id="escolhido-ataque2" onclick="selectAtaques(2)">
+            <label id="nome-ataque2"></label>
+            <label id="desc-ataque2"></label>
+            <label id="cd-ataque2"></label>
+            <label id="dano-ataque2"></label>
+        </div>
+        <div class="editAtaques" id="escolhido-ataque3" onclick="selectAtaques(3)">
+            <label id="nome-ataque3"></label>
+            <label id="desc-ataque3"></label>
+            <label id="cd-ataque3"></label>
+            <label id="dano-ataque3"></label>
+        </div>
+        <div class="editAtaques" id="escolhido-ataque4" onclick="selectAtaques(4)">
+            <label id="nome-ataque4"></label>
+            <label id="desc-ataque4"></label>
+            <label id="cd-ataque4"></label>
+            <label id="dano-ataque4"></label>
+        </div>
+        <div class="editAtaques" id="escolhido-ataque5" onclick="selectAtaques(5)">
+            <label id="nome-ataque5"></label>
+            <label id="desc-ataque5"></label>
+            <label id="cd-ataque5"></label>
+            <label id="dano-ataque5"></label>
+        </div>
+    </div>
+    <div class="atributos" id="Campo">
+        <div>
+            <input type="button" id="btnForca" value="Gerar atributo" onclick="valoresAtributos('Forca')"> 
+            <label id="Forca">Forca:</label>
+            <label id="boF"></label>
+        </div>
+        <div>
+            <input type="button" id="btnsaude" value="Gerar atributo" onclick="valoresAtributos('saude')"> 
+            <label id="saude">Saude:</label>
+            <label id="boC"></label>
+        </div>
+        <div>
+            <input type="button" id="btnAgilidade" value="Gerar atributo" onclick="valoresAtributos('Agilidade')"> 
+            <label id="Agilidade">Agilidade:</label>
+            <label id="boA"></label>
+        </div>
+        <div>
+            <input type="button" id="btnCarisma" value="Gerar atributo" onclick="valoresAtributos('Carisma')"> 
+            <label id="Carisma">Carisma:</label>
+            <label id="boCa"></label>
+        </div>
+        <div>
+            <input type="button" id="btnDestreza" value="Gerar atributo" onclick="valoresAtributos('Destreza')"> 
+            <label id="Destreza">Destreza:</label>
+            <label id="boD"></label>
+        </div>
+        <div>
+            <input type="button" id="btnInteligencia" value="Gerar atributo" onclick="valoresAtributos('Inteligencia')"> 
+            <label id="Inteligencia">Inteligencia:</label>
+            <label id="boI"></label>
+        </div>
+        <div>
+            <input type="button" id="btnPercepcao" value="Gerar atributo" onclick="valoresAtributos('Percepcao')"> 
+            <label id="Percepcao">Percepção:</label>
+            <label id="boP"></label>
+        </div> 
+    </div>
+    <div class="button">
+        <button type="submit" onclick="salvarpersona()">Salvar Personagem</button>
+    </div>
+   
+</div>
+</body>
+</html>

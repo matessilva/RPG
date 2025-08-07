@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RPG Nome</title>
+
+<script type="text/javascript" src="assets/js/Reativo.js"></script>
+<script type="text/javascript" src="assets/js/turnos.js"></script>
+<script type="text/javascript" src="assets/js/dice.js"></script>
+<script type="text/javascript" src="assets/js/jogoj.js"></script>
+<script type="text/javascript" src="assets/js/inventory.js"></script>
+<script type="text/javascript" src="assets/js/futurojson.js"></script>
+<script type="text/javascript" src="assets/js/gerarmap.js"></script>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="assets/css/cssj.css" media="screen" />
+</head>
+<body>
+<div id="container">
+    <div class="team">
+        <div class="heroi" id="partner1" style="display:none;">
+            <img >
+            <label></label>
+            <div class="vida">
+                <label >0/0</label>
+                <div class="barra-vida">
+                </div>
+            </div>
+        </div>
+        <div class="heroi" id="personagemprincipal">
+            <img id="imgprincipal" src="" alt="Guerreiro">
+            <label id="nomeprincipal"></label>
+            <div class="vida" id="vidaprincipal">
+                <label id="saudeprincipal">0 / 0 ()</label>
+                
+                <div class="barra-vida">
+                    <div id="barravida-tira" style="width:100%; height: 100%; background-color: green; ">
+                        <div id="barra-shield" style="width:0; height: 100%; background-color: blue; float:right;"></div>
+                    </div>
+                </div>
+               
+                
+            </div>
+        </div>
+        <div class="heroi" id="partner1" style="display:none;">
+            <img>
+            <label></label>
+            <div class="vida">
+                <label>0 / 0</label>
+                <div class="barra-vida">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tabble">
+        <div class="container-tabble" id="tabelinha">
+            <div class="inventory">
+                <button style="background-color:pink ;" onclick="inventarioabre()">CARNE COM CHURRAS</button>
+                <div id="inventariosome" class="espacos-invetory" style="display: none; position: absolute;">
+                    <div>
+                        <div class="positioncs" id="bag-slot1">
+                            <img src="" alt="">
+                            <label for=""></label>
+                        </div>
+                        <div class="positioncs" id="bag-slot2">
+                            <img src="" alt="">
+                            <label for=""></label>
+                        </div>
+                        <div class="positioncs" id="bag-slot3"></div>
+                    </div><div>
+                        <div class="positioncs" id="bag-slot4"></div>
+                        <div class="positioncs" id="bag-slot5"></div>
+                        <div class="positioncs" id="bag-slot6"></div> 
+                    </div>
+                    <div>
+                        <div class="positioncs" id="bag-slot7"></div>
+                        <div class="positioncs" id="bag-slot8"></div>
+                        <div class="positioncs" id="bag-slot9"></div> 
+                    </div>         
+                </div>
+            </div>
+            <div><button onclick="iniciarBatalha()">Lutar</button></div>
+            <div><button onclick="colocarAataques()">Escolher Ataques</button>
+                <div id="list-ataq">
+                    <button onclick="attbasico()" id="btn-ataque1"><label>Ataque Basico</label><br><label></label></button><br>
+                    <button onclick="luta(1)" id="btn-ataque1"><label id="nome-ataque1"></label><br><label id="dano-ataque1"></label></button><br>
+                    <button onclick="luta(2)" id="btn-ataque2"><label id="nome-ataque2"></label><br><label id="dano-ataque2"></label></button><br>
+                    <button onclick="luta(3)" id="btn-ataque3"><label id="nome-ataque3"></label><br><label id="dano-ataque3"></label></button>
+                    
+                </div>
+               
+            </div>
+            <div><button onclick="gerarMapa()">Teste mapa</button></div>
+            <div><button onclick="miniMapp()">Ver mapa</button></div>
+            <div id="campo-map" class="miniMap" style="display: none; position: absolute;">
+                <div class="pixels" id="id-pixel">
+                
+                </div>
+            </div>
+        </div>
+       
+        <div id="tabuleiro">
+            
+
+
+            <!-- Segue abaixo os campos que o personagem irá andar -->
+            <div class="campos-tabuleiro">   
+                <div class="linha" id="linha1"> 
+                    <div class="campo-tabuleiro" id="l1c1"></div>
+                    <div class="campo-tabuleiro" id="l1c2"></div>
+                    <div class="campo-tabuleiro" id="l1c3"></div>
+                    <div class="campo-tabuleiro" id="l1c4"></div>
+                    <div class="campo-tabuleiro" id="l1c5"></div>
+                    <div class="campo-tabuleiro" id="l1c6"></div>
+                    <div class="campo-tabuleiro" id="l1c7"></div>
+                    <div class="campo-tabuleiro" id="l1c8"></div>
+                    <div class="campo-tabuleiro" id="l1c9"></div>
+                </div>
+
+                <div class="linha" id="linha2"> 
+                    <div class="campo-tabuleiro" id="l2c1"></div>
+                    <div class="campo-tabuleiro" id="l2c2"></div>
+                    <div class="campo-tabuleiro" id="l2c3"></div>
+                    <div class="campo-tabuleiro" id="l2c4"></div>
+                    <div class="campo-tabuleiro" id="l2c5"></div>
+                    <div class="campo-tabuleiro" id="l2c6"></div>
+                    <div class="campo-tabuleiro" id="l2c7"></div>
+                    <div class="campo-tabuleiro" id="l2c8"></div>
+                    <div class="campo-tabuleiro" id="l2c9"></div>
+                    
+                </div>
+
+                <div class="linha" id="linha3">
+                    <div class="campo-tabuleiro" id="l3c1"></div>
+                    <div class="campo-tabuleiro" id="l3c2"></div>
+                    <div class="campo-tabuleiro" id="l3c3"></div>
+                    <div class="campo-tabuleiro" id="l3c4"></div>
+                    <div class="campo-tabuleiro" id="l3c5"></div>
+                    <div class="campo-tabuleiro" id="l3c6"></div>
+                    <div class="campo-tabuleiro" id="l3c7"></div>
+                    <div class="campo-tabuleiro" id="l3c8"></div>
+                    <div class="campo-tabuleiro" id="l3c9"></div>
+                </div>
+
+                <div class="linha" id="linha4"> 
+                    <div class="campo-tabuleiro" id="l4c1"></div>
+                    <div class="campo-tabuleiro" id="l4c2"></div>
+                    <div class="campo-tabuleiro" id="l4c3"></div>
+                    <div class="campo-tabuleiro" id="l4c4"></div>
+                    <div class="campo-tabuleiro" id="l4c5"></div>
+                    <div class="campo-tabuleiro" id="l4c6"></div>
+                    <div class="campo-tabuleiro" id="l4c7"></div>
+                    <div class="campo-tabuleiro" id="l4c8"></div>
+                    <div class="campo-tabuleiro" id="l4c9"></div>
+                </div>
+
+                <div class="linha" id="linha5"> 
+                    <div class="campo-tabuleiro" id="l5c1"></div>
+                    <div class="campo-tabuleiro" id="l5c2"></div>
+                    <div class="campo-tabuleiro" id="l5c3"></div>
+                    <div class="campo-tabuleiro" id="l5c4" onclick=""></div>
+                    <div class="campo-tabuleiro" id="l5c5" onclick="andarTabuleiro()" style="background-color: aqua;"></div>  <!-- Esse é o quadrado central Tudo deverá voltar aqui -->
+                    <div class="campo-tabuleiro" id="l5c6"></div>
+                    <div class="campo-tabuleiro" id="l5c7"></div>
+                    <div class="campo-tabuleiro" id="l5c8"></div>
+                    <div class="campo-tabuleiro" id="l5c9"></div>               
+                </div>
+
+                <div class="linha" id="linha6"> 
+                    <div class="campo-tabuleiro" id="l6c1"></div>
+                    <div class="campo-tabuleiro" id="l6c2"></div>
+                    <div class="campo-tabuleiro" id="l6c3"></div>
+                    <div class="campo-tabuleiro" id="l6c4"></div>
+                    <div class="campo-tabuleiro" id="l6c5"></div>
+                    <div class="campo-tabuleiro" id="l6c6"></div>
+                    <div class="campo-tabuleiro" id="l6c7"></div>
+                    <div class="campo-tabuleiro" id="l6c8"></div>
+                    <div class="campo-tabuleiro" id="l6c9"></div>
+                </div>
+
+                <div class="linha" id="linha7"> 
+                    <div class="campo-tabuleiro" id="l7c1"></div>
+                    <div class="campo-tabuleiro" id="l7c2"></div>
+                    <div class="campo-tabuleiro" id="l7c3"></div>
+                    <div class="campo-tabuleiro" id="l7c4"></div>
+                    <div class="campo-tabuleiro" id="l7c5"></div>
+                    <div class="campo-tabuleiro" id="l7c6"></div>
+                    <div class="campo-tabuleiro" id="l7c7"></div>
+                    <div class="campo-tabuleiro" id="l7c8"></div>
+                    <div class="campo-tabuleiro" id="l7c9"></div>
+                </div>
+
+                <div class="linha" id="linha8"> 
+                    <div class="campo-tabuleiro" id="l8c1"></div>
+                    <div class="campo-tabuleiro" id="l8c2"></div>
+                    <div class="campo-tabuleiro" id="l8c3"></div>
+                    <div class="campo-tabuleiro" id="l8c4"></div>
+                    <div class="campo-tabuleiro" id="l8c5"></div>
+                    <div class="campo-tabuleiro" id="l8c6"></div>
+                    <div class="campo-tabuleiro" id="l8c7"></div>
+                    <div class="campo-tabuleiro" id="l8c8"></div>
+                    <div class="campo-tabuleiro" id="l8c9"></div>
+                </div>
+
+                <div class="linha" id="linha9"> 
+                    <div class="campo-tabuleiro" id="l9c1"></div>
+                    <div class="campo-tabuleiro" id="l9c2"></div>
+                    <div class="campo-tabuleiro" id="l9c3"></div>
+                    <div class="campo-tabuleiro" id="l9c4"></div>
+                    <div class="campo-tabuleiro" id="l9c5"></div>
+                    <div class="campo-tabuleiro" id="l9c6"></div>
+                    <div class="campo-tabuleiro" id="l9c7"></div>
+                    <div class="campo-tabuleiro" id="l9c8"></div>
+                    <div class="campo-tabuleiro" id="l9c9"></div>
+                </div>
+             
+            </div> 
+
+
+
+        </div>
+    </div>
+    <div class="enemi team">
+        <div class="heroi" id="partner1" style="display:none;">
+            <img >
+            <label></label>
+            <div class="vida">
+                <label >0/0</label>
+                <div class="barra-vida">
+                </div>
+            </div>
+        </div>
+        <div class="heroi" id="vilaoprincipal1" style="display:none;" onclick="marcarAtaqueMob(1)">
+            <img id="imgV1">
+            <label id="nomeVprincipal1"></label>
+            <div class="vida">
+                <label id="vidaVprincipal1">0/0</label>
+                <div class="barra-vida">
+                        <div id="barravida-tiraV1" style="width:100%; height: 100%; background-color: green; ">
+                        </div>
+                </div>
+                </div>
+        </div>
+        <div class="heroi" id="vilaoprincipal2" style="display:none;" onclick="marcarAtaqueMob(2)">
+            <img id="imgV2">
+            <label id="nomeVprincipal2"></label>
+            <div class="vida">
+                <label id="vidaVprincipal2">0/0</label>
+                <div class="barra-vida">
+                        <div id="barravida-tiraV2" style="width:100%; height: 100%; background-color: green; ">
+                        </div>
+                </div>
+                </div>
+        </div>
+        <div class="heroi" id="vilaoprincipal3" style="display:none;" onclick="marcarAtaqueMob(3)">
+            <img id="imgV3">
+            <label id="nomeVprincipal3"></label>
+            <div class="vida">
+                <label id="vidaVprincipal3">0/0</label>
+                <div class="barra-vida">
+                        <div id="barravida-tiraV3" style="width:100%; height: 100%; background-color: green; ">
+                        </div>
+                </div>
+                </div>
+        </div>
+        <div class="heroi" id="partner1" style="display:none;">
+            <img >
+            <label></label>
+            <div class="vida">
+                <label >0/0</label>
+                <div class="barra-vida">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="assets/js/luta.js"></script>
+<script type="text/javascript" src="assets/js/inicializar.js"></script>
+
+</html>
