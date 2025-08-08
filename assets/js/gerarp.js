@@ -309,6 +309,35 @@ function geraratributos (tipo, valor){
 
 
 function salvarpersona(){
+    var checks = [0,0,0,0] //[Classe] []
+    if (realSelect[0]!=false&&realSelect[1]!=false&&realSelect[2]!=false){
+        checks[0] = 1;
+        document.getElementById('confereCampoAtaques').style='border:none'
+    }else{
+        document.getElementById('confereCampoAtaques').style='border:5px solid red'
+    }
+    if (document.getElementById('nomePersonagem').value!=''){
+        checks[1] = 1;
+        document.getElementById('confereCampoNome').style='border:none'
+    }else{
+        document.getElementById('confereCampoNome').style='border:5px solid red'
+    }
+    if (Personagem.Classe!=false){
+        checks[2] = 1;
+        document.getElementById('classes').style='border:none'
+    }else{
+        document.getElementById('classes').style='border:5px solid red'
+    }
+    if (Personagem.Forca!=0&& Personagem.saude!=0&& Personagem.Agilidade!=0&& Personagem.Carisma!=-0
+        &&Personagem.Destreza!=0&&Personagem.Inteligencia!=0&&Personagem.Percepcao!=0){
+            checks[3] = 1;
+            document.getElementById('campoAtt').style='border:5px double aqua;'
+        }else{
+            
+        document.getElementById('campoAtt').style='border:5px solid red'
+        }
+
+     if (checks[0]==1&&checks[1]==1&&checks[2]==1&&checks[3]==1){
     var retornaclasse = Personagem.Classe;
  Personagem.Forca = Personagem.Forca + classes[retornaclasse].Forca; 
  Personagem.saude = Personagem.saude + classes[retornaclasse].saude; 
@@ -325,8 +354,11 @@ Personagem.move2 = realSelect[1];
 Personagem.move3 = realSelect[2];
 Personagem.Nome = document.getElementById('nomePersonagem').value;
     localStorage.setItem('Personagem',JSON.stringify(Personagem));
-
-
+        alert('Personagem Salvo')
+        window.location.href ='jogo.html'
+     }else{
+        alert('Preencha os campos em vermelho')
+     }
 
     
 };

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class='container'>
-        <div class="nome">
+        <div class="nome" id="confereCampoNome">
             <label for="Nome">Nome do Personagem:</label>
             <input type="text" id='nomePersonagem'/>
         </div>
@@ -26,7 +26,8 @@
         <input type="button" onclick="classe('Bardo')" value="Bardo">
     </div>
     <img id="imagemClasse" src="">
-    <div class="ataques-campo">
+    <Label>Escolha 3 Ataques</Label>
+    <div class="ataques-campo" id="confereCampoAtaques">
         <div class="editAtaques" id="escolhido-ataque1" onclick="selectAtaques(1)">
             <label id="nome-ataque1"></label>
             <label id="desc-ataque1"></label>
@@ -51,14 +52,9 @@
             <label id="cd-ataque4"></label>
             <label id="dano-ataque4"></label>
         </div>
-        <div class="editAtaques" id="escolhido-ataque5" onclick="selectAtaques(5)">
-            <label id="nome-ataque5"></label>
-            <label id="desc-ataque5"></label>
-            <label id="cd-ataque5"></label>
-            <label id="dano-ataque5"></label>
-        </div>
     </div>
-    <div class="atributos" id="Campo">
+    
+    <div class="atributos" id="campoAtt">
         <div>
             <input type="button" id="btnForca" value="Gerar atributo" onclick="valoresAtributos('Forca')"> 
             <label id="Forca">Forca:</label>
